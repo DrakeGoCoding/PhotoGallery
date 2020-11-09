@@ -31,7 +31,7 @@ function openImageWindow(imgPosition){
 
     // Previous button
     let prevBtn = document.createElement('a');
-    prevBtn.innerHTML += `<i class="fas fa-chevron-left"></i>`;
+    prevBtn.setAttribute('class', 'fas fa-chevron-left prev-btn');
     prevBtn.onclick = () => changeImgTo(PREV_IMG);
     imageWindow.appendChild(prevBtn);
 
@@ -49,7 +49,7 @@ function openImageWindow(imgPosition){
 
     // Next Button
     let nextBtn = document.createElement('a');
-    nextBtn.innerHTML += `<i class="fas fa-chevron-right"></i>`;
+    nextBtn.setAttribute('class', 'fas fa-chevron-right next-btn');
     nextBtn.onclick = () => changeImgTo(NEXT_IMG);
     imageWindow.appendChild(nextBtn);
 }

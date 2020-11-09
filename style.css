@@ -42,6 +42,7 @@ p{
 .fab.fa-facebook-square, .fab.fa-instagram-square, .fab.fa-twitter-square{
     color: #00333f;
     margin-right: 10px;
+    font-size: 40px;
 }
 
 #container{
@@ -86,7 +87,6 @@ p{
     position: fixed;
     top: 0;
     left: 0;
-    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -102,6 +102,7 @@ p{
     background-color: #ddd;
     border-radius: 4px;
     padding: 5px;
+    cursor: pointer;
 }
 
 .img-window figure figcaption{
@@ -119,7 +120,13 @@ p{
     color: gray;
 }
 
-i{
+.next-btn, .prev-btn{
     color: white;
+    opacity: 0.5;
     font-size: 100px;
+    cursor: pointer;
+}
+
+.next-btn:hover, .prev-btn:hover{
+    opacity: 1;
 }
