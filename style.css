@@ -2,6 +2,18 @@
     user-select: none;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.7); 
+}
+   
+::-webkit-scrollbar-thumb {
+    background: #efefef; 
+}
+
 body{
     margin: 0;
 }
@@ -11,38 +23,38 @@ p{
 }
 
 #header{
-    padding-left: 50px;
+    padding-left: 7vw;
     color:#00333f;
-    background-color: #ddd;
+    background-color: #b1b1b1;
 }
 
 #web-name{
-    padding-top: 60px;
+    padding-top: 5vh;
     font-family: 'Poppins', sans-serif;
-    font-size: 60px;
+    font-size: 5vw;
 }
 
 #web-intro{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 25px;
-    padding-bottom: 80px;
+    font-size: 2vw;
+    padding-bottom: 7vh;
 }
 
 #footer{
-    padding-top: 80px;
-    padding-bottom: 80px;
-    padding-right: 50px;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    padding-right: 7vw;
     text-align: right;
     font-family: 'Poppins', sans-serif;
-    font-size: 50px;
+    font-size: 4vw;
     color: #00333f;
-    background-color: #ddd;
+    background-color: #b1b1b1;
 }
 
 .fab.fa-facebook-square, .fab.fa-instagram-square, .fab.fa-twitter-square{
     color: #00333f;
     margin-right: 10px;
-    font-size: 40px;
+    font-size: 3vw;
 }
 
 #container{
@@ -125,21 +137,23 @@ p{
 
 .img-window figure{
     text-align: center;
-    opacity: 1;
 }
 
 .img-window figure img{
-    border: 1px solid #ddd;
+    max-width: 700px;
+    max-height: 700px;
+    width: 100%;
+    height: 100%;
+    border: 5px solid #ddd;
     background-color: #ddd;
     border-radius: 4px;
-    padding: 5px;
     cursor: pointer;
 }
 
 .img-window figure figcaption{
     color: white;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
+    font-size: 1.5vw;
     margin-top: 10px;
 }
 
@@ -151,10 +165,18 @@ p{
     color: gray;
 }
 
+.next-btn{
+    margin-right: 5vw;
+}
+
+.prev-btn{
+    margin-left: 5vw;
+}
+
 .next-btn, .prev-btn{
     color: white;
     opacity: 0.5;
-    font-size: 100px;
+    font-size: 5vw;
     cursor: pointer;
 }
 
