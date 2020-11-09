@@ -19,27 +19,25 @@ function displayGallery(imgList, imgsPerRow) {
     newImageBtn.setAttribute('class', 'column new-img-btn');
     newImageBtn.innerHTML = `<i class="fas fa-plus"></i>`;
     newImageBtn.onclick = () => {
-        imgList = addRandomImageTo(imgList);
+        imgList.push(newRandomImage());
         displayGallery(imgList, imgsPerRow);
     }
 
     if (imgList.length % imgsPerRow !== 0) newRow.appendChild(newImageBtn);
-    else{
+    else {
         newRow = document.createElement('div');
         newRow.setAttribute('class', 'row');
         newRow.appendChild(newImageBtn);
         container.appendChild(newRow);
     }
+
+    updateImgList();
 }
 
-function addRandomImageTo(imgList){
-    let newImage;
-    while(true){
-        newImage = generateImgList(1, 1000, 700)[0];
-        if (!imgList.includes(newImage)) {
-            imgList.push(newImage);
-            return imgList;
-        }
+function newRandomImage() {
+    while (true) {
+        let newImage = generateImgList(1, 1000, 700)[0];
+        if (!imgList.includes(newImage)) return newImage;
     }
 }
 
@@ -82,6 +80,14 @@ function openImageWindow(imgPosition) {
     imageWindow.appendChild(nextBtn);
 }
 
+function updateImgList(){
+    images = document.querySelectorAll('.column.image img');
+    for (let i = 0; i < images.length; i++) {
+        let image = images[i];
+        image.onclick = () => openImageWindow(i);
+    }
+}
+
 function closeImageWindow() {
     document.querySelector('.img-window').remove();
 }
@@ -116,14 +122,9 @@ const IMGS_PER_ROW = 3;
 const NEXT_IMG = true;
 const PREV_IMG = false;
 
+let images;
 let container = document.getElementById('container');
 displayGallery(imgList, IMGS_PER_ROW);
-
-let images = document.getElementsByTagName('img');
-for (let i = 0; i < images.length; i++) {
-    let image = images[i];
-    image.onclick = () => openImageWindow(i);
-}
 
 // ----------------------------------------------------------------------
 // ----------------------------------------------------------------------
