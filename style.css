@@ -92,7 +92,7 @@ p{
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
     cursor: pointer;
-    -webkit-filter: brightness(70%);
+    filter: brightness(70%);
 }
 
 .column.image img{
