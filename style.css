@@ -1,0 +1,125 @@
+*{
+    user-select: none;
+}
+
+body{
+    margin: 0;
+}
+
+p{
+    margin: 0;
+}
+
+#header{
+    padding-left: 50px;
+    color:#00333f;
+    background-color: #ddd;
+}
+
+#web-name{
+    padding-top: 60px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 60px;
+}
+
+#web-intro{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    padding-bottom: 80px;
+}
+
+#footer{
+    padding-top: 80px;
+    padding-bottom: 80px;
+    padding-right: 50px;
+    text-align: right;
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    color: #00333f;
+    background-color: #ddd;
+}
+
+.fab.fa-facebook-square, .fab.fa-instagram-square, .fab.fa-twitter-square{
+    color: #00333f;
+    margin-right: 10px;
+}
+
+#container{
+    height: 100%;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.row{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.column.image{
+    text-align: center;
+}
+
+.column.image img:hover{
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    cursor: pointer;
+    -webkit-filter: brightness(70%);
+}
+
+.column.image img{
+    width: 70%;
+    height: 70%;
+    border: 10px solid #efefef;
+    border-radius: 4px;
+}
+
+.img-window{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-window figure{
+    text-align: center;
+    opacity: 1;
+}
+
+.img-window figure img{
+    border: 1px solid #ddd;
+    background-color: #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.img-window figure figcaption{
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.img-window figure figcaption .img-src{
+    color: cornflowerblue;
+}
+
+.img-window figure figcaption .img-src:hover{
+    color: gray;
+}
+
+i{
+    color: white;
+    font-size: 100px;
+}
