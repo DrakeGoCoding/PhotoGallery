@@ -1,12 +1,12 @@
-function displayGallery(imgList, imgsPerRow) {
+function displayGallery(imgList) {
     let newRow;
     container.innerHTML = ``;
-    for (let i = 0; i < imgList.length; i += imgsPerRow) {
-        // Append a new row per "imgsPerRow"
+    for (let i = 0; i < imgList.length; i += IMGS_PER_ROW) {
+        // Append a new row per "IMGS_PER_ROW"
         newRow = document.createElement('div');
         newRow.setAttribute('class', 'row');
-        for (let j = i; j < imgList.length && j < i + imgsPerRow; j++) {
-            // Append a maximum of "imgsPerRow" images per row
+        for (let j = i; j < imgList.length && j < i + IMGS_PER_ROW; j++) {
+            // Append a maximum of "IMGS_PER_ROW" images per row
             let newImage = document.createElement('div');
             newImage.setAttribute('class', 'column image');
             newImage.innerHTML = `<img src="${imgList[j]}" alt="img">`
@@ -20,10 +20,10 @@ function displayGallery(imgList, imgsPerRow) {
     newImageBtn.innerHTML = `<i class="fas fa-plus"></i>`;
     newImageBtn.onclick = () => {
         imgList.push(newRandomImage());
-        displayGallery(imgList, imgsPerRow);
+        displayGallery(imgList, IMGS_PER_ROW);
     }
 
-    if (imgList.length % imgsPerRow !== 0) newRow.appendChild(newImageBtn);
+    if (imgList.length % IMGS_PER_ROW !== 0) newRow.appendChild(newImageBtn);
     else {
         newRow = document.createElement('div');
         newRow.setAttribute('class', 'row');
@@ -36,7 +36,7 @@ function displayGallery(imgList, imgsPerRow) {
 
 function newRandomImage() {
     while (true) {
-        let newImage = generateImgList(1, 1000, 700)[0];
+        let newImage = generateImgList(1, 1000, IMG_SIZE)[0];
         if (!imgList.includes(newImage)) return newImage;
     }
 }
@@ -112,19 +112,19 @@ function changeImgTo(position) {
 // ----------------------------------------------------------------------
 // ----------------------------------------------------------------------
 
-let imgList = [
-    `https://picsum.photos/id/867/700`, `https://picsum.photos/id/649/700`, `https://picsum.photos/id/933/700`, `https://picsum.photos/id/356/700`,
-    `https://picsum.photos/id/888/700`, `https://picsum.photos/id/44/700`, `https://picsum.photos/id/608/700`, `https://picsum.photos/id/685/700`,
-    `https://picsum.photos/id/482/700`, `https://picsum.photos/id/702/700`, `https://picsum.photos/id/736/700`, `https://picsum.photos/id/273/700`,
-]
-
 const IMGS_PER_ROW = 3;
+const IMG_SIZE = 700;
 const NEXT_IMG = true;
 const PREV_IMG = false;
 
+let imgList = [
+    `https://picsum.photos/id/867/${IMG_SIZE}`, `https://picsum.photos/id/649/${IMG_SIZE}`, `https://picsum.photos/id/933/${IMG_SIZE}`, `https://picsum.photos/id/356/${IMG_SIZE}`,
+    `https://picsum.photos/id/888/${IMG_SIZE}`, `https://picsum.photos/id/44/${IMG_SIZE}`, `https://picsum.photos/id/608/${IMG_SIZE}`, `https://picsum.photos/id/685/${IMG_SIZE}`,
+    `https://picsum.photos/id/482/${IMG_SIZE}`, `https://picsum.photos/id/702/${IMG_SIZE}`, `https://picsum.photos/id/736/${IMG_SIZE}`, `https://picsum.photos/id/273/${IMG_SIZE}`,
+]
 let images;
 let container = document.getElementById('container');
-displayGallery(imgList, IMGS_PER_ROW);
+displayGallery(imgList);
 
 // ----------------------------------------------------------------------
 // ----------------------------------------------------------------------
