@@ -123,17 +123,7 @@ p{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* animation: 1s slideRight; */
 }
-
-/* @keyframes slideRight{
-    0%{
-        left: -100%;
-    }
-    100%{
-        left: 0;
-    }
-} */
 
 .img-window figure{
     text-align: center;
