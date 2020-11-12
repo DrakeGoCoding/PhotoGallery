@@ -6,7 +6,7 @@ function displayGallery(imgList) {
         newRow = document.createElement('div');
         newRow.setAttribute('class', 'row');
         for (let j = i; j < imgList.length && j < i + IMGS_PER_ROW; j++) {
-            // Append a maximum of "IMGS_PER_ROW" images per row
+            // Append a maximum of "IMGS_PER_ROW" imgDivs per row
             let newImage = document.createElement('div');
             newImage.setAttribute('class', 'column image');
             newImage.innerHTML = `<img src="${imgList[j]}" alt="img">`
@@ -41,13 +41,10 @@ function newRandomImage() {
     }
 }
 
-// Keep track of current image's position in image list
-let currentImagePosition;
-
 function openImageWindow(imgPosition) {
     // Get image by position in array
-    let image = images[imgPosition];
-    currentImagePosition = imgPosition;
+    let image = imgDivs[imgPosition];
+    currentImgPosition = imgPosition;
 
     // Create a specific image window for image details
     let imageWindow = document.createElement('div');
@@ -81,9 +78,9 @@ function openImageWindow(imgPosition) {
 }
 
 function updateImgList(){
-    images = document.querySelectorAll('.column.image img');
-    for (let i = 0; i < images.length; i++) {
-        let image = images[i];
+    imgDivs = document.querySelectorAll('.column.image img');
+    for (let i = 0; i < imgDivs.length; i++) {
+        let image = imgDivs[i];
         image.onclick = () => openImageWindow(i);
     }
 }
@@ -96,16 +93,16 @@ function changeImgTo(position) {
     let newFigurePosition;
 
     if (position === NEXT_IMG) {
-        newFigurePosition = currentImagePosition + 1;
-        if (newFigurePosition > images.length - 1) newFigurePosition = 0;
+        newFigurePosition = currentImgPosition + 1;
+        if (newFigurePosition > imgDivs.length - 1) newFigurePosition = 0;
     }
     else if (position === PREV_IMG) {
-        newFigurePosition = currentImagePosition - 1;
-        if (newFigurePosition < 0) newFigurePosition = images.length - 1;
+        newFigurePosition = currentImgPosition - 1;
+        if (newFigurePosition < 0) newFigurePosition = imgDivs.length - 1;
     }
 
     openImageWindow(newFigurePosition);
-    currentImagePosition = newFigurePosition;
+    currentImgPosition = newFigurePosition;
 }
 
 // ----------------------------------------------------------------------
@@ -122,22 +119,24 @@ let imgList = [
     `https://picsum.photos/id/888/${IMG_SIZE}`, `https://picsum.photos/id/44/${IMG_SIZE}`, `https://picsum.photos/id/608/${IMG_SIZE}`, `https://picsum.photos/id/685/${IMG_SIZE}`,
     `https://picsum.photos/id/482/${IMG_SIZE}`, `https://picsum.photos/id/702/${IMG_SIZE}`, `https://picsum.photos/id/736/${IMG_SIZE}`, `https://picsum.photos/id/273/${IMG_SIZE}`,
 ]
-let images;
+let imgDivs;
+let currentImgPosition;
 let container = document.getElementById('container');
+
 displayGallery(imgList);
 
 // ----------------------------------------------------------------------
 // ----------------------------------------------------------------------
 // ----------------------------------------------------------------------
 
-function generateImgList(quantity, idRange, imgSize) {
+function generateImgList(quantity, idLimit) {
     let requestImg = new XMLHttpRequest();
     let img, random;
     let imgList = [];
-    if (!idRange) idRange = 1000;
+    if (!idLimit) idLimit = 1000;
     do {
-        random = Math.floor(Math.random() * idRange);
-        img = `https://picsum.photos/id/${random}/${imgSize}`;
+        random = Math.floor(Math.random() * idLimit);
+        img = `https://picsum.photos/id/${random}/${IMG_SIZE}`;
         requestImg.open('GET', img, false);
         requestImg.send();
         if (requestImg.status === 200 && !imgList.includes(img)) imgList.push(img);
