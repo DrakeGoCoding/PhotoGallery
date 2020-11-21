@@ -1,6 +1,6 @@
 function displayGallery(imgList) {
     let newRow;
-    container.innerHTML = ``;
+    gallery.innerHTML = ``;
     for (let i = 0; i < imgList.length; i += IMGS_PER_ROW) {
         // Append a new row per "IMGS_PER_ROW"
         newRow = document.createElement('div');
@@ -12,7 +12,7 @@ function displayGallery(imgList) {
             newImage.innerHTML = `<img src="${imgList[j]}" alt="img">`
             newRow.appendChild(newImage);
         }
-        container.appendChild(newRow);
+        gallery.appendChild(newRow);
     }
 
     let newImageBtn = document.createElement('div');
@@ -28,7 +28,7 @@ function displayGallery(imgList) {
         newRow = document.createElement('div');
         newRow.setAttribute('class', 'row');
         newRow.appendChild(newImageBtn);
-        container.appendChild(newRow);
+        gallery.appendChild(newRow);
     }
 
     updateImgList();
@@ -50,7 +50,7 @@ function openImageWindow(imgPosition) {
     let imageWindow = document.createElement('div');
     imageWindow.setAttribute('class', 'img-window');
     imageWindow.onclick = () => closeImageWindow();
-    container.appendChild(imageWindow);
+    gallery.appendChild(imageWindow);
 
     // Previous button
     let prevBtn = document.createElement('a');
@@ -85,10 +85,6 @@ function updateImgList(){
     }
 }
 
-function closeImageWindow() {
-    document.querySelector('.img-window').remove();
-}
-
 function changeImgTo(position) {
     let newFigurePosition;
 
@@ -103,6 +99,10 @@ function changeImgTo(position) {
 
     openImageWindow(newFigurePosition);
     currentImgPosition = newFigurePosition;
+}
+
+function closeImageWindow() {
+    document.querySelector('.img-window').remove();
 }
 
 // ----------------------------------------------------------------------
@@ -121,7 +121,7 @@ let imgList = [
 ]
 let imgDivs;
 let currentImgPosition;
-let container = document.getElementById('container');
+let gallery = document.getElementById('gallery');
 
 displayGallery(imgList);
 
