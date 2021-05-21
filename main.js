@@ -129,14 +129,14 @@ displayGallery(imgList);
 // ----------------------------------------------------------------------
 // ----------------------------------------------------------------------
 
-function generateImgList(quantity, idLimit) {
+function generateImgList(quantity, idLimit, imgSize) {
     let requestImg = new XMLHttpRequest();
     let img, random;
     let imgList = [];
     if (!idLimit) idLimit = 1000;
     do {
         random = Math.floor(Math.random() * idLimit);
-        img = `https://picsum.photos/id/${random}/${IMG_SIZE}`;
+        img = `https://picsum.photos/id/${random}/${imgSize}`;
         requestImg.open('GET', img, false);
         requestImg.send();
         if (requestImg.status === 200 && !imgList.includes(img)) imgList.push(img);
